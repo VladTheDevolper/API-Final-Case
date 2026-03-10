@@ -41,7 +41,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text[:15]
-    
+ 
 
 class Follow(models.Model):
     user = models.ForeignKey(
@@ -63,4 +63,34 @@ class Follow(models.Model):
 
     def __str__(self):
         return f'{self.user} подписан на {self.following}'
+  
+
+class Like(models.Model):
+    """Модель для лайков постов"""
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='likes',
+        verbose_name='Пользователь')
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name='likes',
+        verbose_name='Пост')
+    created = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='Дата лайка')
+   
+    class Meta:
+        verbose_name = 'Лайк'
+        verbose_name_plural = 'Лайки'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'post'],
+                name='unique_like'
+            )
+        ]
+
+    def __str__(self):
+        return f'{self.user} лайкнул {self.post}'
 
