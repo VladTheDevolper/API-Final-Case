@@ -14,11 +14,11 @@ REST API для сервиса Yatube.
 Клонировать репозиторий и перейти в него в командной строке:
 
 ```
-git@github.com:VladTheDevolper/api-final-yatube.git
+git@github.com:VladTheDevolper/API-Final-Case.git
 ```
 
 ```
-cd api_final_yatube
+cd API-Final-Case
 ```
 
 Создать и активировать виртуальное окружение:
@@ -107,6 +107,18 @@ Content-Type: application/json
     "following": "username"
 }
 ```
+Лайкнуть пост (требуется токен)
+
+```
+POST /api/v1/posts/1/like/
+Authorization: Bearer <access_token>
+```
+
+Запуск тестов
+
+```
+pytest
+```
 
 ## Документация
 
@@ -115,3 +127,12 @@ Content-Type: application/json
 ```
 http://127.0.0.1:8000/redoc/
 ```
+
+## О себе и проекте
+
+Этот проект создан мной в рамках обучения на курсе Яндекс.Практикум. В процессе работы были реализованы:
+
+- API для постов, комментариев, групп и подписок
+- JWT-аутентификация
+- Тесты для проверки дополнительного функционала (эндпоинтов для Like)
+- Функционал лайков к постам (не входило изначально в рамки учебного проекта)
