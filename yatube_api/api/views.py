@@ -66,7 +66,7 @@ class CommentViewSet(viewsets.ModelViewSet):
         serializer.save(
             author=self.request.user,
             post=self.get_post())
-    
+
 
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     """
